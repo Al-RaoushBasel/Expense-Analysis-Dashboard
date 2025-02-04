@@ -1,4 +1,3 @@
-```markdown
 # 💸 Expense Analysis Dashboard
 
 **Expense Analysis Dashboard** is a Python-based tool that helps you analyze expenses, track spending habits across various categories, and visualize trends through dynamic charts.
