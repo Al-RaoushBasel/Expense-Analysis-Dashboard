@@ -15,7 +15,7 @@
 - **🧹 Error Handling**: Includes meaningful error messages for missing files or invalid data.
 
 
-📥 Installation
+##📥 Installation
 1. **Clone the Repository**:
    git clone https://github.com/Al-RaoushBasel/Expense-Analysis-Dashboard.git
 
@@ -30,7 +30,7 @@
    python main.py
 
 
-📱 Usage
+##📱 Usage
 - **➕ Upload File**: Use the default `expenses.csv` file or provide your own CSV file.
 - **📄 View Total Spending**: Calculate your total expenditure.
 - **📊 Visualize Data**: 
@@ -39,7 +39,7 @@
 - **💾 Export Summaries**: Save spending by category to a CSV file for future analysis.
 - **🧹 Error Feedback**: Handles file not found or data format errors gracefully.
 
-🛠️ Technologies Used
+##🛠️ Technologies Used
 - **Python**: Primary programming language.
 - **Pandas**: For data manipulation and analysis.
 - **Matplotlib**: For creating dynamic and interactive visualizations.
