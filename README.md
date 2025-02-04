@@ -30,6 +30,7 @@
 4. Run the Project:
    python main.py
 
+---
 
 ## 📱 Usage
 ```markdown
@@ -40,6 +41,9 @@
   - View a **line chart** for daily spending trends.
 - **💾 Export Summaries**: Save spending by category to a CSV file for future analysis.
 - **🧹 Error Feedback**: Handles file not found or data format errors gracefully.
+
+---
+
 
 ## 🛠️ Technologies Used
 ```markdown
