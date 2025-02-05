@@ -1,2 +1,6 @@
-pandas
-matplotlib
+matplotlib>=3.10.0
+pandas>=2.2.3
+plotly>=6.0.0
+python-dateutil>=2.9.0.post0
+pytz>=2025.1
+tzdata>=2025.1
