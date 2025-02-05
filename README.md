@@ -59,3 +59,23 @@
 - **Matplotlib:** Visualizations.
 - **Tkinter:** For creating a professional, interactive GUI.
 - **CSV:** File format for data input.
+
+## 📸 Screenshots
+
+Here are some snapshots of the Expense Analysis Dashboard in action:
+
+### 1. **Dashboard Overview**
+![image](https://github.com/user-attachments/assets/9db61d8d-d713-4347-96e0-504a4082ee47)
+*Description: The main interface of the application, showing various options for analyzing expenses.*
+
+---
+
+### 2. **Spending by Category**
+![image](https://github.com/user-attachments/assets/b8547c75-751d-4e02-af86-411912c53190)
+*Description: A bar chart visualization displaying expenses categorized by type.*
+
+---
+
+### 3. **Monthly Summary**
+![image](https://github.com/user-attachments/assets/a7342c73-4099-41d6-9efa-0ca5bfa9ccd3)
+*Description: A detailed monthly spending summary for easy tracking and budgeting.*
