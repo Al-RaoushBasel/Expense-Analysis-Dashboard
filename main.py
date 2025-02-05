@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px  # For interactive visualizations
 
 # ===== Helper Functions =====
 
@@ -45,6 +46,61 @@ def daily_spending_trend(data):
     plt.show()
 
 
+def calculate_monthly_totals(data):
+    """Calculate and display monthly total spending."""
+    monthly_totals = data.groupby(data['Date'].dt.to_period('M'))['Amount'].sum()
+    print("\nMonthly Total Spending:")
+    print(monthly_totals)
+    monthly_totals.plot(kind='line', marker='o', title='Monthly Spending Trends')
+    plt.xlabel('Month')
+    plt.ylabel('Total Amount ($)')
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
+
+def calculate_yearly_totals(data):
+    """Calculate and display yearly total spending."""
+    yearly_totals = data.groupby(data['Date'].dt.year)['Amount'].sum()
+    print("\nYearly Total Spending:")
+    print(yearly_totals)
+    yearly_totals.plot(kind='bar', color='orange', title='Yearly Spending Trends')
+    plt.xlabel('Year')
+    plt.ylabel('Total Amount ($)')
+    plt.tight_layout()
+    plt.show()
+
+
+def top_categories(data, period, value):
+    """
+    Display top 3 spending categories for a specific period (month/year).
+    :param data: DataFrame containing expense data.
+    :param period: 'month' or 'year' to specify the period type.
+    :param value: Specific month (YYYY-MM) or year (YYYY) to filter data.
+    """
+    if period == 'month':
+        filtered_data = data[data['Date'].dt.to_period('M') == value]
+    elif period == 'year':
+        filtered_data = data[data['Date'].dt.year == int(value)]
+    else:
+        print("Invalid period. Use 'month' or 'year'.")
+        return
+
+    if filtered_data.empty:
+        print(f"No data found for the specified {period}: {value}")
+        return
+
+    category_totals = filtered_data.groupby('Category')['Amount'].sum()
+    top_categories = category_totals.nlargest(3)
+    print(f"\nTop 3 Categories for {period} {value}:")
+    print(top_categories)
+    top_categories.plot(kind='bar', title=f'Top Categories for {period.capitalize()} {value}', color='purple')
+    plt.xlabel('Category')
+    plt.ylabel('Total Amount ($)')
+    plt.tight_layout()
+    plt.show()
+
+
 def export_category_summary(data):
     """Export spending by category to a CSV file."""
     category_spending = data.groupby('Category')['Amount'].sum()
@@ -58,9 +114,12 @@ def display_menu():
     print("1. View Total Spending")
     print("2. View Spending by Category (Bar Chart)")
     print("3. View Daily Spending Trends (Line Chart)")
-    print("4. Export Category Spending to CSV")
-    print("5. Exit")
-    return input("Enter your choice (1-5): ")
+    print("4. View Monthly Spending Summary")
+    print("5. View Yearly Spending Summary")
+    print("6. View Top Categories for a Specific Month or Year")
+    print("7. Export Category Spending to CSV")
+    print("8. Exit")
+    return input("Enter your choice (1-8): ")
 
 # ===== Main Program =====
 
@@ -81,12 +140,21 @@ def main():
         elif choice == '3':
             daily_spending_trend(data)
         elif choice == '4':
-            export_category_summary(data)
+            calculate_monthly_totals(data)
         elif choice == '5':
+            calculate_yearly_totals(data)
+        elif choice == '6':
+            period = input("Enter period ('month' or 'year'): ").strip().lower()
+            value = input(f"Enter the specific {period} (e.g., '2025-01' for month or '2025' for year): ").strip()
+            top_categories(data, period, value)
+        elif choice == '7':
+            export_category_summary(data)
+        elif choice == '8':
             print("Exiting. Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 5.")
+            print("Invalid choice. Please enter a number between 1 and 8.")
 
 if __name__ == "__main__":
-    main()
+    print("This file is meant to contain logic and should be run only for testing.")
+
